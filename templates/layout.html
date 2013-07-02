@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{%- block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" media="all" href="{{static_url('css/style.css')}}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{static_url('css/prettify.css')}}" />
+</head>
+<body>
+    <div id="primary">
+        {% include "header.html" %}
+        <section id="content">
+            {%- block main %}{% endblock %}
+        </section>
+    </div>
+    {% include "footer.html" %}
+
+    <script defer async type="text/javascript" src="{{static_url('js/run_prettify.js')}}"></script>
+</body>
+</html>

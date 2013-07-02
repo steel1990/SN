@@ -1,0 +1,18 @@
+<header id="header">
+    <h1 id="site-title">
+        <a href="/" title="{{config.name}}" rel="home">
+            {{config.name}}
+        </a>
+    </h1>
+    <nav id="nav">
+        <ul>
+            {%- for item in config.categorys %}
+            <li>
+                <a href="/{{item.name}}/">
+                    {{item.showName|title}}
+                </a>
+            </li>
+            {%- endfor %}
+        </ul>
+    </nav>
+</header>

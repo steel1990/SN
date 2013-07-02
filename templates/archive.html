@@ -1,0 +1,41 @@
+{%- extends "layout.html" -%}
+{%- block title %}{{pagination.title}} | {{config.name}}{% endblock %}
+
+{%- block main %}
+<ol class="post-list">
+    {%- for item in pagination.items %}
+    <li class="post">
+        <h2>
+            <a href="{{permalink_url(item)}}">
+                {{item.title}}
+            </a>
+        </h2>
+        <div class="date">{{item.pubdate|date('Y-m-d')}}</div>
+        <article>
+            {{item.meta.desc}}
+        </article>
+        <div class="meta">
+            <ul class="tags">
+                {%- for tag in item.tags %}
+                    <li><a href="/tag/{{tag}}">{{tag}}</a></li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </li>
+    {%- endfor %}
+</ol>
+
+{% if pagination.pages > 1 %}
+<ol class="pagination">
+    {%- for i in pagination.iter_pages %}
+        <li>
+        {% if i == pagination.page %}
+            <span class='page current'>{{i}}</span>
+        {% else %}
+            <a href='{{pagination_url(i)}}' title='{{i}}' class='page'>{{i}}</a>
+        {% endif %}
+        </li>
+    {%- endfor %}
+</ol>
+{% endif %}
+{% endblock -%}
